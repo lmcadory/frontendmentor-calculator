@@ -1,26 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="dist/styles.css" />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://www.frontendmentor.io/profile/lmcadory" target="_blank">Lamar</a>.
-  </div>
-</body>
+    <title>Frontend Mentor | Calculator app</title>
+  </head>
+  <body>
+    <div class="base">
+      <div class="toolbar">
+        <p class="title">calc</p>
+        <div class="theme">
+          <label class="all-caps mt">theme</label>
+          <div class="theme-picker">
+            <div class="options-label">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+            </div>
+            <div class="radios">
+              <label for="theme1" class="label"></label>
+              <input type="radio" name="switch" id="theme1" value="1" checked />
+              <label for="theme2" class="label"></label>
+              <input type="radio" name="switch" id="theme2" value="2" />
+              <label for="theme3" class="label"></label>
+              <input type="radio" name="switch" id="theme3" value="3" />
+              <span class="slider"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="display">
+        <input id="calculations" readonly />
+      </div>
+      <div class="btn-pad">
+        <div class="btn-group">
+          <button class="numb">7</button><button class="numb">8</button
+          ><button class="numb">9</button
+          ><button class="del all-caps">del</button>
+          <button class="numb">4</button><button class="numb">5</button
+          ><button class="numb">6</button><button class="numb">+</button>
+          <button class="numb">1</button><button class="numb">2</button
+          ><button class="numb">3</button><button class="numb">-</button>
+          <button class="numb">.</button><button class="numb">0</button
+          ><button class="numb">/</button><button class="numb">x</button>
+          <button class="reset all-caps">reset</button
+          ><button class="equals">=</button>
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://www.frontendmentor.io/profile/lmcadory" target="_blank"
+          >Lamar</a
+        >.
+      </div>
+    </div>
+  </body>
 </html>
