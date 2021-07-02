@@ -1,5 +1,63 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+:root[data-theme="blue"] {
+  --background-main: #3a4764;
+  --background-btn-group: #232c43;
+  --background-screen: #182034;
+  --key-background: #637097;
+  --key-background-active: #a3b2e1;
+  --key-shadow: #404e72;
+  --key-enter: #d03f2f;
+  --key-enter-active: #f96c5d;
+  --key-enter-shadow: #93261a;
+  --key-num-background: #eae3dc;
+  --key-num-background-active: white;
+  --key-num-shadow: #b4a597;
+  --text-dark: #444b5a;
+  --text-light: white;
+  --text-equals: #1b2428;
+  --text-display: white;
+}
+
+:root[data-theme="white"] {
+  --background-main: #e6e6e6;
+  --background-btn-group: #d1cccc;
+  --background-screen: #ededed;
+  --key-background: #377f86;
+  --key-background-active: #62b4bc;
+  --key-shadow: #1b5f65;
+  --key-enter: #ca5502;
+  --key-enter-active: #ff8b38;
+  --key-enter-shadow: #893901;
+  --key-num-background: #e5e4e1;
+  --key-num-background-active: white;
+  --key-num-shadow: #a69d91;
+  --text-dark: #35352c;
+  --text-light: white;
+  --text-equals: #1b2428;
+  --text-display: #35352c;
+}
+
+:root[data-theme="purple"] {
+  --background-main: #160628;
+  --background-btn-group: #1d0934;
+  --background-screen: #1d0934;
+  --key-background: #58077d;
+  --key-background-active: #8531af;
+  --key-shadow: #bc15f4;
+  --key-enter: #00e0d1;
+  --key-enter-active: #94fff8;
+  --key-enter-shadow: #6cf9f2;
+  --key-num-background: #341c4f;
+  --key-num-background-active: #6c34ad;
+  --key-num-shadow: #871c9c;
+  --text-dark: #ffe53d;
+  --text-light: white;
+  --text-equals: #1b2428;
+  --text-display: #ffe53d;
+}
+
 html,
 body {
   height: 100%;
@@ -20,6 +78,7 @@ html {
 
 body {
   font-family: "Spartan";
+  background: var(--background-main);
 }
 
 .all-caps {
@@ -27,10 +86,10 @@ body {
 }
 
 .attribution {
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-align: center;
   position: relative;
-  bottom: .75rem;
+  bottom: 0.75rem;
 }
 
 .attribution a {
@@ -41,39 +100,71 @@ body {
   display: -ms-grid;
   display: grid;
   grid-gap: 24px;
-  -ms-grid-rows: ([row] auto)[3];
-      grid-template-rows: repeat(3, [row] auto);
-  margin: 28px 24px 30px;
-  width: 23.438rem;
-  background-color: #3a4764;
+  background-color: var(--background-main);
+}
+
+@media (min-width: 360px) {
+  .base {
+    width: 23.438rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .base {
+    width: 33.75rem;
+  }
 }
 
 .btn-pad {
-  background-color: #232c43;
-  width: 20.438rem;
-  height: 26.25rem;
-  margin: 0 1.5rem;
-  border-radius: 0.625rem;
+  background-color: var(--background-btn-group);
+}
+
+@media (min-width: 360px) {
+  .btn-pad {
+    width: 20.438rem;
+    height: 26.25rem;
+    margin: 0 1.5rem;
+    border-radius: 0.625rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .btn-pad {
+    width: 33.75rem;
+    height: 30rem;
+    margin: 0 1.875rem;
+    border-radius: 0.625rem;
+  }
 }
 
 .btn-pad .btn-group {
   display: -ms-grid;
   display: grid;
-  grid-gap: 13px;
   -ms-grid-columns: ([col] auto)[4];
       grid-template-columns: repeat(4, [col] auto);
   -ms-grid-rows: ([row] auto)[5];
       grid-template-rows: repeat(5, [row] auto);
-  margin: 1.5rem;
+}
+
+@media (min-width: 360px) {
+  .btn-pad .btn-group {
+    grid-gap: .813rem;
+    margin: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .btn-pad .btn-group {
+    grid-gap: 1.563rem;
+    margin: 1.875rem;
+  }
 }
 
 .btn-pad .btn-group button {
-  width: 3.75rem;
-  height: 4rem;
   font-family: inherit;
   font-size: 1.75rem;
   line-height: 1.938rem;
-  color: #444b5a;
+  color: var(--text-dark);
   cursor: pointer;
   font-style: normal;
   font-weight: bold;
@@ -81,55 +172,95 @@ body {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  background: #eae3dc;
-  border-radius: 0.313rem;
+  background: var(--key-num-background);
   border: 0;
-  -webkit-box-shadow: inset 0rem -0.25rem 0rem #b4a597;
-          box-shadow: inset 0rem -0.25rem 0rem #b4a597;
+  -webkit-box-shadow: inset 0rem -0.25rem 0rem var(--key-num-shadow);
+          box-shadow: inset 0rem -0.25rem 0rem var(--key-num-shadow);
+}
+
+@media (min-width: 360px) {
+  .btn-pad .btn-group button {
+    width: 3.75rem;
+    height: 4rem;
+    border-radius: 0.313rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .btn-pad .btn-group button {
+    width: 6.313rem;
+    height: 4rem;
+    border-radius: 0.313rem;
+  }
 }
 
 .btn-pad .btn-group button:active {
-  -webkit-box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
-          box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  background: var(--key-num-background-active);
   -webkit-transform: translateY(4px);
           transform: translateY(4px);
 }
 
-.btn-pad .btn-group button:nth-last-child(1), .btn-pad .btn-group button:nth-last-child(2) {
-  grid-column: span 2;
+.btn-pad .btn-group button:nth-last-child(1) {
+  color: var(--text-equals);
   font-size: 1rem;
   line-height: 1.125rem;
-  color: white;
-  background: #d03f2f;
-  -webkit-box-shadow: inset 0rem -0.25rem 0rem #93261a;
-          box-shadow: inset 0rem -0.25rem 0rem #93261a;
+  background: var(--key-enter);
+  -webkit-box-shadow: inset 0rem -0.25rem 0rem var(--key-enter-shadow);
+          box-shadow: inset 0rem -0.25rem 0rem var(--key-enter-shadow);
+}
+
+.btn-pad .btn-group button:nth-last-child(1):active {
+  background: var(--key-enter-active);
+}
+
+.btn-pad .btn-group button:nth-last-child(1), .btn-pad .btn-group button:nth-last-child(2) {
+  grid-column: span 2;
   width: 100%;
 }
 
 .btn-pad .btn-group button:nth-child(4), .btn-pad .btn-group button:nth-last-child(2) {
   font-size: 1rem;
   line-height: 1.125rem;
-  color: white;
-  background: #637097;
-  -webkit-box-shadow: inset 0rem -0.25rem 0rem #404e72;
-          box-shadow: inset 0rem -0.25rem 0rem #404e72;
+  color: var(--text-light);
+  background: var(--key-background);
+  -webkit-box-shadow: inset 0rem -0.25rem 0rem var(--key-shadow);
+          box-shadow: inset 0rem -0.25rem 0rem var(--key-shadow);
+}
+
+.btn-pad .btn-group button:nth-child(4):active, .btn-pad .btn-group button:nth-last-child(2):active {
+  background: var(--key-background-active);
 }
 
 .container {
-  width: 375px;
-  background: #3a4764;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: inherit;
 }
 
-.display {
-  height: 5.5rem;
+@media (min-width: 360px) {
+  .display {
+    width: 20.438rem;
+    height: 5.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .display {
+    width: 33.75rem;
+    height: 8rem;
+  }
 }
 
 .display input {
-  margin: 0 1.5rem;
-  width: 20.438rem;
+  width: inherit;
   height: 100%;
-  background: #182034;
-  color: white;
+  background: var(--background-screen);
+  color: var(--text-display);
   border-radius: 0.625rem;
   border-top-style: hidden;
   border-right-style: hidden;
@@ -142,6 +273,18 @@ body {
   font-family: inherit;
   font-size: 2rem;
   line-height: 2.25rem;
+}
+
+@media (min-width: 360px) {
+  .display input {
+    margin: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .display input {
+    margin: 0 2rem;
+  }
 }
 
 .display input:focus {
@@ -182,7 +325,7 @@ body {
   padding: 0 0.313rem;
   width: 4.375rem;
   height: 1.563rem;
-  background-color: #232c43;
+  background-color: var(--background-btn-group);
   border-radius: 0.813rem;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
@@ -202,7 +345,7 @@ body {
   z-index: -1;
   width: 100%;
   height: 1.563rem;
-  background-color: #232c43;
+  background-color: var(--background-btn-group);
   border-radius: 0.813rem;
 }
 
@@ -222,7 +365,7 @@ body {
   height: 1rem;
   padding-bottom: 10%;
   margin: 6% 0 0 5%;
-  background: #d03f2f;
+  background: var(--key-enter);
   border-radius: 50%;
   -webkit-transition: -webkit-transform 1s;
   transition: -webkit-transform 1s;
@@ -338,7 +481,7 @@ body {
   display: grid;
   -ms-grid-columns: ([col] auto)[2];
       grid-template-columns: repeat(2, [col] auto);
-  color: white;
+  color: var(--text-display);
   height: 2.75rem;
   margin: 1.75rem 1.5em auto 1.5em;
   -webkit-box-pack: justify;

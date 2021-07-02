@@ -1,4 +1,17 @@
 @import "varibles";
+@import "mixins";
+
+:root[data-theme="blue"] {
+  @include spread-map($theme-map-blue);
+}
+
+:root[data-theme="white"] {
+  @include spread-map($theme-map-white);
+}
+
+:root[data-theme="purple"] {
+  @include spread-map($theme-map-purple);
+}
 
 html,
 body {
@@ -18,6 +31,7 @@ html {
 
 body {
   font-family: $font-main;
+  background: theme-var(--background-main);
 }
 
 .all-caps {
@@ -25,10 +39,10 @@ body {
 }
 
 .attribution {
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-align: center;
   position: relative;
-  bottom: .75rem;
+  bottom: 0.75rem;
 
   a {
     color: hsl(228, 45%, 44%);
@@ -38,56 +52,95 @@ body {
 .base {
   display: grid;
   grid-gap: 24px;
-  grid-template-rows: repeat(3, [row] auto);
-  margin: 28px 24px 30px;
-  width: 23.438rem;
-  background-color: $background-main;
+  background-color: theme-var(--background-main);
+
+  @include sm {
+    width: 23.438rem;
+  }
+
+  @include xl {
+    width: 33.75rem;
+  }
 }
 
 .btn-pad {
-  background-color: $background-btn-group;
-  width: 20.438rem;
-  height: 26.25rem;
-  margin: 0 1.5rem;
-  border-radius: 0.625rem;
+  @include sm {
+    width: 20.438rem;
+    height: 26.25rem;
+    margin: 0 1.5rem;
+    border-radius: 0.625rem;
+  }
+
+  @include xl {
+    width: 33.75rem;
+    height: 30rem;
+    margin: 0 1.875rem;
+    border-radius: 0.625rem;
+  }
+
+  background-color: theme-var(--background-btn-group);
 
   .btn-group {
     display: grid;
-    grid-gap: 13px;
+    @include sm {
+      grid-gap: .813rem;
+      margin: 1.5rem;
+    }
+
+    @include xl {
+      grid-gap: 1.563rem;
+      margin: 1.875rem;
+    }
+
     grid-template-columns: repeat(4, [col] auto);
     grid-template-rows: repeat(5, [row] auto);
-    margin: 1.5rem;
 
     button {
-      width: 3.75rem;
-      height: 4rem;
+      @include sm {
+        width: 3.75rem;
+        height: 4rem;
+        border-radius: 0.313rem;
+      }
+
+      @include xl {
+        width: 6.313rem;
+        height: 4rem;
+        border-radius: 0.313rem;
+      }
+
       font-family: inherit;
       font-size: 1.75rem;
       line-height: 1.938rem;
-      color: $text-dark;
+      color: theme-var(--text-dark);
       cursor: pointer;
       font-style: normal;
       font-weight: bold;
       align-items: center;
       text-align: center;
-      background: $key-num-background;
-      border-radius: 0.313rem;
+      background: theme-var(--key-num-background);
       border: 0;
-      box-shadow: inset 0rem -0.25rem 0rem $key-num-shadow;
+      box-shadow: inset 0rem -0.25rem 0rem theme-var(--key-num-shadow);
 
       &:active {
-        box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+        background: theme-var(--key-num-background-active);
         transform: translateY(4px);
+      }
+
+      &:nth-last-child(1) {
+        color: theme-var(--text-equals);
+        font-size: 1rem;
+        line-height: 1.125rem;
+        background: theme-var(--key-enter);
+        box-shadow: inset 0rem -0.25rem 0rem theme-var(--key-enter-shadow);
+
+        &:active {
+          background: theme-var(--key-enter-active);
+        }
       }
 
       &:nth-last-child(1),
       &:nth-last-child(2) {
         grid-column: span 2;
-        font-size: 1rem;
-        line-height: 1.125rem;
-        color: $text-light;
-        background: $key-enter;
-        box-shadow: inset 0rem -0.25rem 0rem $key-enter-shadow;
         width: 100%;
       }
 
@@ -95,28 +148,51 @@ body {
       &:nth-last-child(2) {
         font-size: 1rem;
         line-height: 1.125rem;
-        color: $text-light;
-        background: $key-background;
-        box-shadow: inset 0rem -0.25rem 0rem $key-shadow;
+        color: theme-var(--text-light);
+        background: theme-var(--key-background);
+        box-shadow: inset 0rem -0.25rem 0rem theme-var(--key-shadow);
+
+        &:active {
+          background: theme-var(--key-background-active);
+        }
       }
     }
   }
 }
 
 .container {
-  width: 375px;
-  background: $background-main;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: inherit;
 }
 
 .display {
-  height: 5.5rem;
+  @include sm {
+    width: 20.438rem;
+    height: 5.5rem;
+  }
+
+  @include xl {
+    width: 33.75rem;
+    height: 8rem;
+  }
+  
 
   input {
-    margin: 0 1.5rem;
-    width: 20.438rem;
+    @include sm {
+      margin: 0 1.5rem;
+    }
+  
+    @include xl {
+      margin: 0 2rem;
+    }
+    width: inherit;
+    
+    
     height: 100%;
-    background: $background-screen;
-    color: $text-light;
+    background: theme-var(--background-screen);
+    color: theme-var(--text-display);
     border-radius: 0.625rem;
     border-top-style: hidden;
     border-right-style: hidden;
@@ -162,7 +238,7 @@ body {
   padding: 0 0.313rem;
   width: 4.375rem;
   height: 1.563rem;
-  background-color: $background-btn-group;
+  background-color: theme-var(--background-btn-group);
   border-radius: 0.813rem;
   justify-content: space-evenly;
   justify-items: center;
@@ -175,7 +251,7 @@ body {
     z-index: -1;
     width: 100%;
     height: 1.563rem;
-    background-color: $background-btn-group;
+    background-color: theme-var(--background-btn-group);
     border-radius: 0.813rem;
   }
 
@@ -195,7 +271,7 @@ body {
     height: 1rem;
     padding-bottom: 10%;
     margin: 6% 0 0 5%;
-    background: $key-enter;
+    background: theme-var(--key-enter);
     border-radius: 50%;
     transition: transform 1s;
     animation-timing-function: ease-in-out;
@@ -270,7 +346,7 @@ body {
 .toolbar {
   display: grid;
   grid-template-columns: repeat(2, [col] auto);
-  color: $text-light;
+  color: theme-var(--text-display);
   height: 2.75rem;
   margin: 1.75rem 1.5em auto 1.5em;
   justify-content: space-between;
